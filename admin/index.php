@@ -5,6 +5,10 @@
 	{
 		redirect('../');
 	}
+	else if (!isset($_SESSION['admin'])
+	{
+		redirect('../');
+	}
 ?>
         <div id="page-wrapper">
 

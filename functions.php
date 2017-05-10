@@ -186,6 +186,9 @@ function login_user() {
 		} else {
 		    while ($row = fetch_array($query)) {
 		        $_SESSION['display_name'] = $row['first_name'].' '.$row['last_name'];
+			if ($row['admin'] != 0)
+				$_SESSION['admin'] = true;
+			$_SESSION['username'] = $row['username'];
 		    }
 			redirect('admin');
 		}
