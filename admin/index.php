@@ -25,9 +25,9 @@
                 </div>
                 <!-- /.row -->
 				<?php
-					if ($_SERVER['REQUEST_URI'] == "/Studentwork/hanleys/admin/" || $_SERVER['REQUEST_URI'] == "/Studentwork/hanleys/admin/index.php") {
+					//if ($_SERVER['REQUEST_URI'] == "/Studentwork/hanleys/admin/" || $_SERVER['REQUEST_URI'] == "/Studentwork/hanleys/admin/index.php") {
 						include('includes/admin_content.php');
-					}
+					//}
 					if (isset($_GET['orders'])) {
 						include('orders.php');
 					} elseif (isset($_GET['add_p'])) {

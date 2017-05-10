@@ -278,4 +278,29 @@ DELIMITER;
     }
 }
 
+function count_genres() {
+	$query = query("SELECT COUNT(*) FROM genres");
+	confirm($query);
+	while ($row = fetch_array($query)) {
+		echo $row[0];
+	}
+}
+
+function count_books()  {
+	$query = query("SELECT COUNT(*) FROM books");
+	confirm($query);
+	while ($row = fetch_array($query)) {
+		echo $row[0];
+	}
+}
+
+function get_orders() {
+	$query = query("SELECT * FROM orders");
+	confirm($query);
+	while ($row = fetch_array($query)) {
+		$orders = <<<DELIMITER
+			
+DELIMITER;
+	}
+}
 ?>
