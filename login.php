@@ -7,7 +7,7 @@ include('includes/header.php');
 
       <header>
             <h1 class="text-center">Login</h1>
-			<h2 class="text-center"><?php display_message(); ?></h2>
+                        <h2 class="text-center"><?php display_message(); ?></h2>
         <div class="col-sm-4 col-sm-offset-5">         
             <form class="" action="<?php login_user(); ?>" method="post" enctype="multipart/form-data">
                 <div class="form-group"><label for="">

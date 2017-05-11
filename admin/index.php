@@ -1,14 +1,11 @@
 <?php
-	include('../config.php');
-	include('includes/header.php');
-	if (!isset($_SESSION['username']))
-	{
-		redirect('../');
-	}
-	else if (!isset($_SESSION['admin'])
-	{
-		redirect('../');
-	}
+error_reporting(E_ALL);
+include('../config.php');
+include('includes/header.php');
+if (!isset($_SESSION['username']) || !isset($_SESSION['admin']))
+{
+  redirect('../');
+}
 ?>
         <div id="page-wrapper">
 
@@ -28,24 +25,24 @@
                     </div>
                 </div>
                 <!-- /.row -->
-				<?php
-					//if ($_SERVER['REQUEST_URI'] == "/Studentwork/hanleys/admin/" || $_SERVER['REQUEST_URI'] == "/Studentwork/hanleys/admin/index.php") {
-						include('includes/admin_content.php');
-					//}
-					if (isset($_GET['orders'])) {
-						include('orders.php');
-					} elseif (isset($_GET['add_p'])) {
-						include('add_product.php');
-					} elseif (isset($_GET['categories'])) {
-						include('categories.php');
-					} elseif (isset($_GET['products'])) {
-						include('products.php');
-					} elseif (isset($_GET['users'])) {
-						include('users.php');
-					} elseif (isset($_GET['edit_p'])) {
-						include('edit_product.php');
-					}
-				?>
+<?php
+//if ($_SERVER['REQUEST_URI'] == "/Studentwork/hanleys/admin/" || $_SERVER['REQUEST_URI'] == "/Studentwork/hanleys/admin/index.php") {
+include('includes/admin_content.php');
+//}
+if (isset($_GET['orders'])) {
+  include('orders.php');
+} elseif (isset($_GET['add_p'])) {
+  include('add_product.php');
+} elseif (isset($_GET['categories'])) {
+  include('categories.php');
+} elseif (isset($_GET['products'])) {
+  include('products.php');
+} elseif (isset($_GET['users'])) {
+  include('users.php');
+} elseif (isset($_GET['edit_p'])) {
+  include('edit_product.php');
+}
+?>
             </div>
             <!-- /.container-fluid -->
 <?php
