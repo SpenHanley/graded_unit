@@ -8,13 +8,13 @@ To call the global connection within a function we need to make it global
 */
 function query($sql) {
 	global $connection;
-	
+
 	return mysqli_query($connection, $sql);
 }
 
 function confirm($result) {
 	global $connection;
-	
+
 	if (!$result) {
 		die("QUERY FAILED ".mysqli_error($connection));
 	}
@@ -22,7 +22,7 @@ function confirm($result) {
 
 function escape_string($string) {
 	global $connection;
-	
+
 	/* Use escape string to help prevent sql injection attacks */
 	return mysqli_real_escape_string($connection, $string);
 }
@@ -34,14 +34,14 @@ function fetch_array($result) {
 function get_products_in_dash() {
 	$query = query("SELECT * FROM products");
 	confirm($query);
-	
+
 	while($row = fetch_array($query)) {
 		$product = <<<DELIMITER
 			<tr>
 				<td>{$row['product_id']}</td>
 				<td>{$row['product_title']}</td>
 				<td>
-					<img style="width:150px;height:50px;" src='uploads/{$row['product_image']}' alt='Image of {$row['product_title']}'/>
+					<img style="width:110px;height:150px;" src='../uploads/{$row['product_image']}' alt='Image of {$row['product_title']}'/>
 				</td>
 				<td>{$row['product_category_id']}</td>
 				<td>&pound;{$row['product_price']}</td>
@@ -63,13 +63,13 @@ DELIMITER;
 function get_products() {
 	$query = query("SELECT * FROM products");
 	confirm($query);
-	
+
 	while($row = fetch_array($query)) {
 		$product = 	<<<DELIMITER
 						<div class="col-sm-4 col-lg-4 col-md-4">
 							<div class="thumbnail">
 								<a href="item.php?id={$row['product_id']}">
-									<img src="{$row['product_image']}" alt="">
+									<img src="uploads/{$row['product_image']}" alt="">
 								</a>
 								<div class="caption">
 									<h4 class="pull-right">{$row['product_price']}</h4>
@@ -90,7 +90,7 @@ function get_products() {
 								<a class="btn btn-primary" href="cart.php?add={$row['product_id']}">Add to cart</a>
 							</div>
 						</div>
-						
+
 DELIMITER;
 		echo $product;
 	}
@@ -99,7 +99,7 @@ DELIMITER;
 function get_categories() {
 	$query = query("SELECT * FROM categories");
 	confirm($query);
-	
+
 	while($row = fetch_array($query)) {
 		$categories_links = <<<DELIMITER
 		<a href="category.php?id={$row['cat_id']}" class="list-group-item">{$row['cat_title']}</a>
@@ -108,13 +108,28 @@ DELIMITER;
 	}
 }
 
+function get_categories_in_dash() {
+	$query = query("SELECT * FROM categories");
+	confirm($query);
+
+	while ($row = fetch_array($query)) {
+		$categories = <<<DELIMITER
+		<tr>
+				<td>{$row['cat_id']}</td>
+				<td>{$row['cat_title']}</td>
+		</tr>
+DELIMITER;
+		echo $categories;
+	}
+}
+
 function get_categories_select() {
 	$query = query("SELECT * FROM categories");
 	confirm($query);
-	
+
 	while($row = fetch_array($query)) {
 		$category = <<<DELIMITER
-		<option value={$row['cat_id']}">{$row['cat_title']}</option>
+		<option value="{$row['cat_id']}">{$row['cat_title']}</option>
 DELIMITER;
 		echo $category;
 	}
@@ -123,7 +138,7 @@ DELIMITER;
 function get_products_in_cat_page() {
 	$query = query("SELECT * FROM products WHERE product_category_id=".escape_string($_GET['id'])."");
 	confirm($query);
-	
+
 	while($row = fetch_array($query)) {
 		$product = 	<<<DELIMITER
 						<div class="col-md-3 col-sm-6 hero-feature">
@@ -138,7 +153,7 @@ function get_products_in_cat_page() {
                     </div>
                 </div>
             </div>
-						
+
 DELIMITER;
 		echo $product;
 	}
@@ -148,12 +163,12 @@ DELIMITER;
 function get_products_in_shop_page() {
 	$query = query("SELECT * FROM products");
 	confirm($query);
-	
+
 	while($row = fetch_array($query)) {
 		$product = 	<<<DELIMITER
 						<div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
-                    <img src="{$row['product_image']}" alt="">
+                    <img src="uploads/{$row['product_image']}" alt="">
                     <div class="caption">
                         <h3>{$row['product_title']}</h3>
                         <p>{$row['short_desc']}</p>
@@ -163,7 +178,7 @@ function get_products_in_shop_page() {
                     </div>
                 </div>
             </div>
-						
+
 DELIMITER;
 		echo $product;
 	}
@@ -218,7 +233,7 @@ function last_id() {
 function display_orders() {
 	$query = query("SELECT * FROM orders");
 	confirm($query);
-	
+
 	while ($row = fetch_array($query)) {
 		$orders = <<<DELIMITER
 			<tr>
@@ -227,7 +242,7 @@ function display_orders() {
 				<td>{$row['order_transaction']}</td>
 				<td>{$row['order_currency']}</td>
 				<td>{$row['order_status']}</td>
-				<td><a class="btn btn-danger" href="delete_order.php?id={$row['order_id']}><span class="glyphicon glyphicon-remove"></span></a></td>
+				<td><a class="btn btn-danger" href="delete_order.php?id={$row['order_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
 			</tr>
 DELIMITER;
 		echo $orders;
@@ -244,12 +259,40 @@ function add_product() {
 		$product_quantity = escape_string($_POST['product_quantity']);
 		$product_image = escape_string($_FILES['file']['name']);
 		$image_temp_location = escape_string($_FILES['file']['tmp_name']);
-		move_uploaded_file($_FILES['file']['tmp_name'], "uploads/".$product_image);
+		move_uploaded_file($_FILES['file']['tmp_name'], "../uploads/".$product_image);
 		$query = query("INSERT INTO products(product_title, product_category_id, product_price, product_description, short_desc, product_quantity, product_image) VALUES ('{$product_title}','{$product_category_id}','{$product_price}','{$product_description}','{$short_desc}','{$product_quantity}','{$product_image}')");
 		$last_id = last_id();
 		confirm($query);
 		set_message("New product with id {$last_id} Just Added");
 		//redirect('index.php?products');
+	}
+}
+
+function add_category() {
+	if (isset($_POST['submit'])) {
+		$cat_title = escape_string($_POST['cat_title']);
+		$query = query("INSERT INTO categories(cat_title) VALUES ('{$cat_title}');");
+	}
+}
+
+function get_users_in_dash() {
+	$query = query("SELECT * FROM users");
+	confirm($query);
+	while ($row = fetch_array($query)) {
+		$user = <<<DELIMITER
+			<tr>
+				 <td>{$row['user_id']}</td>
+				 <td><img class="admin-user-thumbnail user_image" src="../uploads/{$row['user_image']}" alt="Image of {$row['username']}"></td>
+				 <td>{$row['username']}</td>
+				 <td>{$row['first_name']}</td>
+				 <td>{$row['last_name']}</td>
+				 <td>
+					 <a href="" class="btn btn-warning btn-lg">Edit</a>
+					 <a href="" class="btn btn-danger btn-lg">Delete</a>
+				 </td>
+			</tr>
+DELIMITER;
+		echo $user;
 	}
 }
 ?>

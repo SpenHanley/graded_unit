@@ -13,8 +13,8 @@
 			<th>Quantity</th>
 			<th></th>
 		</tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
 		<?php get_products_in_dash(); ?>
 	</tbody>
 </table>
