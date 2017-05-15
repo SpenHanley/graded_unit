@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="row">
-				<?php get_books(); ?>
+				<?php get_products(); ?>
                 </div> <!-- images end here -->
 
             </div>

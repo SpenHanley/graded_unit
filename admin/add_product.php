@@ -1,36 +1,32 @@
 <?php
 	require_once('../config.php');
-	add_book();
+	add_product();
 ?>
 <div class="col-md-12">
    <div class="row">
       <h1 class="page-header">
-         Add Book
+         Add Product
       </h1>
    </div>
-   <form action="add_book.php" method="post" enctype="multipart/form-data">
+   <form action="" method="post" enctype="multipart/form-data">
       <div class="col-md-8">
          <div class="form-group">
-            <label for="book-title">Book Title </label>
-            <input type="text" name="book_title" class="form-control">
+            <label for="product-title">Product Title </label>
+            <input type="text" name="product_title" class="form-control">
          </div>
          <div class="form-group">
-            <label for="book-title">Book Description</label>
-            <textarea name="book_description" id="" cols="30" rows="10" class="form-control"></textarea>
+            <label for="product-title">Product Description</label>
+            <textarea name="product_description" id="" cols="30" rows="10" class="form-control"></textarea>
          </div>
          <div class="form-group row">
             <div class="col-xs-3">
-               <label for="book-price">Book Price</label>
-               <input type="number" name="book_price" class="form-control" size="60">
+               <label for="product-price">Product Price</label>
+               <input type="number" name="product_price" class="form-control" size="60">
             </div>
          </div>
          <div class="form-group">
-            <label for="book-title">Short Description</label>
+            <label for="product-title">Short Description</label>
             <textarea name="short_desc" id="" cols="30" rows="2" class="form-control"></textarea>
-         </div>
-         <div class='form-group'>
-            <label for='author'>Author</label>
-            <input type='text' name='author' class='form-control'>
          </div>
       </div>
       <!--Main Content-->
@@ -40,30 +36,30 @@
             <input type="submit" name="draft" class="btn btn-warning btn-lg" value="Draft">
             <input type="submit" name="publish" class="btn btn-primary btn-lg" value="Publish">
          </div>
-         <!-- book Categories-->
+         <!-- Product Categories-->
          <div class="form-group">
-            <label for="book-title">Book Genre</label>
-            <select name="genre_id" id="" class="form-control">
-               <option value="">Select Genre</option>
-			   <?php get_genres_select(); ?>
+            <label for="product-title">Product Category</label>
+            <select name="product_category_id" id="" class="form-control">
+               <option value="">Select Category</option>
+			   <?php get_categories_select(); ?>
             </select>
          </div>
-         <!-- book Brands-->
+         <!-- Product Brands-->
          <div class="form-group">
-            <label for="book-title">Book Quantity</label>
-			<input type="text" name="book_quantity" class="form-control" />
+            <label for="product-title">Product Quantity</label>
+			<input type="text" name="product_quantity" class="form-control" />
          </div>
-         <!-- book Tags -->
+         <!-- Product Tags -->
 		 <!--
 			 <div class="form-group">
-				<label for="book-title">book Keywords</label>
+				<label for="product-title">Product Keywords</label>
 				<hr>
-				<input type="text" name="book_tags" class="form-control">
+				<input type="text" name="product_tags" class="form-control">
 			 </div>
 		 -->
-         <!-- book Image -->
+         <!-- Product Image -->
          <div class="form-group">
-            <label for="book-title">Book Image</label>
+            <label for="product-title">Product Image</label>
             <input type="file" name="file" id='img-src'>
 			<br />
 			<img class='thumbnail' id='img-target' style="max-width: 300px;"/>

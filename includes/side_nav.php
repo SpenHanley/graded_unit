@@ -1,8 +1,8 @@
             <div class="col-md-3">
-                <p class="lead">Scot Books</p>
+                <p class="lead">Shop Name</p>
                 <div class="list-group">
 					<?php
-						get_genres();
+						get_categories();
 					?>
                 </div>
             </div>

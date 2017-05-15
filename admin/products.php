@@ -15,6 +15,6 @@
 		</tr>
     </thead>
     <tbody>
-		<?php get_books_in_dash(); ?>
+		<?php get_products_in_dash(); ?>
 	</tbody>
 </table>

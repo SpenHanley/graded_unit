@@ -1,5 +1,5 @@
 <?php 
-include("includes/header.php");
+	include("includes/header.php");
 ?>
 
     <!-- Page Content -->
@@ -26,10 +26,10 @@ include("includes/header.php");
         <!-- Page Features -->
         <div class="row text-center">
 
-
-<?php
-get_books_in_genre_page();
-?>
+            
+			<?php
+			get_products_in_cat_page();
+			?>
 
         </div>
         <!-- /.row -->
@@ -37,4 +37,4 @@ get_books_in_genre_page();
         <hr>
 
         <!-- Footer -->
-                <?php include('includes/footer.php') ?>
+		<?php include('includes/footer.php') ?>

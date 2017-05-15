@@ -4,7 +4,7 @@
 
      <!--Navigation -->
 
-        <?php include("includes/top_nav.php");?>
+	<?php include("includes/top_nav.php");?>
 
          <!-- Contact Section -->
 
@@ -43,7 +43,7 @@
                             <div class="col-lg-12 text-center">
                                 <div id="success"></div>
                                 <button name='submit' type="submit" class="btn btn-xl">Send Message</button>
-                                                                <?php send_message(); ?>
+								<?php send_message(); ?>
                             </div>
                         </div>
                     </form>

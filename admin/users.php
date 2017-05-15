@@ -18,9 +18,21 @@
             </tr>
          </thead>
          <tbody>
-            <?php
-                get_users_in_dash();
-            ?>
+            <?php foreach($users as $user): ?>
+            <tr>
+               <td>2</td>
+               <td><img class="admin-user-thumbnail user_image" src="placehold.it/62x62" alt=""></td>
+               <td>
+                  Rico
+                  <div class="action_links">
+                     <a href="">Delete</a>
+                     <a href="">Edit</a>
+                  </div>
+               </td>
+               <td>Edwin</td>
+               <td>Diaz</td>
+            </tr>
+            <?php endforeach; ?>
          </tbody>
       </table>
       <!--End of Table-->

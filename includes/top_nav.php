@@ -3,8 +3,14 @@
                     <li>
                         <a href="shop.php">Shop</a>
                     </li>
-                   <li>
+                    <li>
+                        <a href="login.php">Login</a>
+                    </li>
+                    <li>
                         <a href="index.php">Home</a>
+                    </li>
+                    <li>
+                        <a href="admin">Admin</a>
                     </li>
                      <li>
                         <a href="checkout.php">Checkout</a>
@@ -12,25 +18,6 @@
                     <li>
                         <a href="contact.php">Contact</a>
                     </li>
-<?php
-if (!isset($_SESSION['username']))
-{
-  echo "<li>
-    <a href='login.php'>Login</a>
-    </li>";
-} else
-{
-  echo "<li>
-    <a href='logout.php'>Logout</a>
-    </li>";
-}
-if (isset($_SESSION['admin']))
-{
-  echo "<li>
-    <a href='admin'>Admin</a>
-    </li>";
-}
-?>
 
                 </ul>
             </div>
