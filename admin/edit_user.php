@@ -19,13 +19,11 @@ if (!isset($_GET['id'])) {
          </div>
          <div class="form-group">
             <label for="product-title">Last Name </label>
-            <input  type="text" name="product_description" id="" cols="30" rows="10" class="form-control" value="<?php echo $row['last_name'] ?>">
+            <input  type="text" name="product_description" id="" class="form-control" value="<?php echo $row['last_name'] ?>">
          </div>
-         <div class="form-group row">
-            <div class="col-xs-3">
+         <div class="form-group">
                <label for="product-price">Username</label>
-               <input type="text" name="product_price" class="form-control" size="60" value="<?php echo $row['usernames'] ?>">
-            </div>
+               <input type="text" name="product_price" class="form-control" size="60" value="<?php echo $row['username'] ?>">
          </div>
       </div>
       <aside id="admin_sidebar" class="col-md-4">

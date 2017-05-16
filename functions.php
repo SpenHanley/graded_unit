@@ -8,7 +8,6 @@ To call the global connection within a function we need to make it global
  */
 function query($sql) {
   global $connection;
-
   return mysqli_query($connection, $sql);
 }
 
@@ -364,5 +363,4 @@ function get_user($id) {
   confirm($query);
   return $query;
 }
-
 ?>
