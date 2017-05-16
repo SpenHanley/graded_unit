@@ -11,9 +11,6 @@
             <a href="index.php?add_p"><i class="fa fa-fw fa-table"></i> Add Product</a>
         </li>
         <li>
-            <a href="index.php?edit_p"><i class="fa fa-fw fa-table"></i> Edit Product</a>
-        </li>
-        <li>
             <a href="index.php?categories"><i class="fa fa-fw fa-desktop"></i> Categories</a>
         </li>
         <li>

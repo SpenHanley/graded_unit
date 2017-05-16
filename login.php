@@ -8,10 +8,10 @@ include('includes/header.php');
       <header>
             <h1 class="text-center">Login</h1>
 			<h2 class="text-center"><?php display_message(); ?></h2>
-        <div class="col-sm-4 col-sm-offset-5">         
+        <div class="col-sm-4 col-sm-offset-5">
             <form class="" action="<?php login_user(); ?>" method="post" enctype="multipart/form-data">
                 <div class="form-group"><label for="">
-                    username<input type="text" name="username" class="form-control"></label>
+                    Username<input type="text" name="username" class="form-control"></label>
                 </div>
                  <div class="form-group"><label for="password">
                     Password<input type="password" name="password" class="form-control"></label>
@@ -21,7 +21,7 @@ include('includes/header.php');
                   <input type="submit" name="submit" class="btn btn-primary" >
                 </div>
             </form>
-        </div>  
+        </div>
 
 
     </header>

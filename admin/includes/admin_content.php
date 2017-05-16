@@ -12,7 +12,7 @@
                                         <i class="fa fa-shopping-cart fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">124</div>
+                                    <div class="huge"><?php get_count("orders"); ?></div>
                                         <div>New Orders!</div>
                                     </div>
                                 </div>
@@ -36,7 +36,7 @@
                                         <i class="fa fa-support fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">13</div>
+                                    <div class="huge"><?php get_count("products"); ?></div>
                                         <div>Products!</div>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                         <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
+                                    <div class="huge"><?php get_count("categories"); ?></div>
                                         <div>Categories!</div>
                                     </div>
                                 </div>

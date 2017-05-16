@@ -1,7 +1,7 @@
 <?php
 	include('../config.php');
 	include('includes/header.php');
-	if (!isset($_SESSION['username']))
+	if (!isset($_SESSION['username']) || !isset($_SESSION['admin']))
 	{
 		redirect('../');
 	}
@@ -25,9 +25,10 @@
                 </div>
                 <!-- /.row -->
 				<?php
-					if ($_SERVER['REQUEST_URI'] == "/Studentwork/hanleys/admin/" || $_SERVER['REQUEST_URI'] == "/Studentwork/hanleys/admin/index.php") {
+					if ($_SERVER['REQUEST_URI'] == "/graded_unit/admin/" || $_SERVER['REQUEST_URI'] == "/graded_unit/admin/index.php") {
 						include('includes/admin_content.php');
 					}
+					
 					if (isset($_GET['orders'])) {
 						include('orders.php');
 					} elseif (isset($_GET['add_p'])) {
@@ -40,6 +41,8 @@
 						include('users.php');
 					} elseif (isset($_GET['edit_p'])) {
 						include('edit_product.php');
+					} elseif (isset($_GET['edit_u'])) {
+						include('edit_user.php');
 					}
 				?>
             </div>
