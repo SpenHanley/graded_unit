@@ -1,9 +1,10 @@
 <?php
 if (!isset($_GET['id'])) {
   redirect('index.php');
-} else {
-  $row = fetch_array(get_user($_GET['id']));
 }
+
+$row = fetch_array(get_user($_GET['id']));
+var_dump($row);
 ?>
 <div class="col-md-12">
   <div class="row">
@@ -14,11 +15,11 @@ if (!isset($_GET['id'])) {
    <form action="" method="post" enctype="multipart/form-data">
       <div class="col-md-8">
          <div class="form-group">
-            <label for="product-title">First Name </label>
+            <label for="product-title">First Name</label>
             <input type="text" name="product_title" class="form-control" value="<?php echo $row['first_name']; ?>">
          </div>
          <div class="form-group">
-            <label for="product-title">Last Name </label>
+            <label for="product-title">Last Name</label>
             <input  type="text" name="product_description" id="" class="form-control" value="<?php echo $row['last_name'] ?>">
          </div>
          <div class="form-group">

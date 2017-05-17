@@ -363,4 +363,31 @@ function get_user($id) {
   confirm($query);
   return $query;
 }
+
+function update_product() {
+  if (isset($_POST['publish'])) {
+    $title = escape_string($_POST['product_title']);
+    $price = escape_string($_POST['product_price']);
+    $description = escape_string($_POST['product_description']);
+    $short_desc = escape_string($_POST['short_desc']);
+    $quantity = escape_string($_POST['product_quantity']);
+    $product_category = escape_string($_POST['product_category']);
+
+    $product_image = escape_string($_FILES['file']['name']);
+    $image_temp_location = escape_string($_FILES['file']['tmp_name']);
+    move_uploaded_file($_FILES['file']['tmp_name'], "../uploads/products/".$user_image);
+
+    $query = "UPDATE products SET product_title='{$title}',
+                               product_price='{$price}',
+                               product_description='{$description}',
+                               product_quantity='{$quantity}',
+                               short_desc='{$short_desc}',
+                               product_image='products/{$product_image}',
+                               product_category_id='{$product_category}'";
+    $query = query($query);
+    confirm($query);
+    redirect('index.php');
+  }
+}
+
 ?>

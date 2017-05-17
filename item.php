@@ -23,7 +23,7 @@
 <div class="row">
 
     <div class="col-md-7">
-       <img class="img-responsive" src="<?php echo $row['product_image']; ?>" alt="">
+       <img class="img-responsive" src="uploads/<?php echo $row['product_image']; ?>" alt="">
 
     </div>
 
@@ -49,7 +49,7 @@
         </p>
     </div>
           
-        <p><?php echo $row['product_description'] ?></p>
+        <p><?php echo $row['short_desc'] ?></p>
 
    
     <form action="">
@@ -66,8 +66,6 @@
 
 
 </div>
-<?php endwhile; ?><!--Row For Image and Short Description-->
-
 
         <hr>
 
@@ -88,18 +86,12 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home">
-
-<p></p>
-           
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-
-
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+    <?php echo $row['product_description']; ?>
 
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">
+    <?php endwhile; ?><!--Row For Image and Short Description-->
+
 
   <div class="col-md-6">
 
