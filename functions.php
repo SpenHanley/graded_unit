@@ -276,6 +276,7 @@ DELIMITER;
 
 function add_product() {
   if (isset($_POST['publish'])) {
+    $path = "../uploads/products/";
     $product_title = escape_string($_POST['product_title']);
     $product_category_id = escape_string($_POST['product_category_id']);
     $product_price = escape_string($_POST['product_price']);
@@ -284,12 +285,12 @@ function add_product() {
     $product_quantity = escape_string($_POST['product_quantity']);
     $product_image = escape_string($_FILES['file']['name']);
     $image_temp_location = escape_string($_FILES['file']['tmp_name']);
-    move_uploaded_file($_FILES['file']['tmp_name'], "../uploads/products/".$product_image);
-    $query = query("INSERT INTO products(product_title, product_category_id, product_price, product_description, short_desc, product_quantity, product_image) VALUES ('{$product_title}','{$product_category_id}','{$product_price}','{$product_description}','{$short_desc}','{$product_quantity}','{$product_image}')");
+    move_uploaded_file($image_temp_location, $path.$product_image);
+    $query = query("INSERT INTO products(product_title, product_category_id, product_price, product_description, short_desc, product_quantity, product_image) VALUES ('{$product_title}','{$product_category_id}','{$product_price}','{$product_description}','{$short_desc}','{$product_quantity}','products/{$product_image}')");
     $last_id = last_id();
     confirm($query);
     set_message("New product with id {$last_id} Just Added");
-    //redirect('index.php?products');
+    redirect('index.php?products');
   }
 }
 
@@ -323,16 +324,16 @@ DELIMITER;
 
 function register_user() {
   if (isset($_POST['register'])) {
+    $path = '../uploads/users/';
     $first_name = escape_string($_POST['first_name']);
     $last_name = escape_string($_POST['last_name']);
     $user_image = escape_string($_FILES['file']['name']);
     $image_temp_location = escape_string($_FILES['file']['tmp_name']);
-    move_uploaded_file($_FILES['file']['tmp_name'], "../uploads/users/".$user_image);
+    move_uploaded_file($image_temp_location, $path.$user_image);
     $username = escape_string($_POST['username']);
     $password = escape_string($_POST['password']);
     $query = query("INSERT INTO users(username, password, first_name, last_name, user_image) VALUES ('{$username}','{$password}','{$first_name}','{$last_name}','users/{$user_image}')");
     $last_id = last_id();
-    set_message($user_image);
   }
 }
 
@@ -389,5 +390,4 @@ function update_product() {
     redirect('index.php');
   }
 }
-
 ?>

@@ -43,7 +43,9 @@
 						include('edit_product.php');
 					} elseif (isset($_GET['edit_u'])) {
 						include('edit_user.php');
-					}
+                                        } elseif (isset($_GET['add_u'])) {
+                                                include('add_user.php');
+                                        }
 				?>
             </div>
             <!-- /.container-fluid -->

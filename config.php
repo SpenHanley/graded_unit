@@ -15,5 +15,6 @@ defined("DB_NAME") ? null : define("DB_NAME", "spen");
 
 $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 error_reporting(E_ALL);
+ini_set('display_errors', 1);
 require_once("functions.php");
 ?>

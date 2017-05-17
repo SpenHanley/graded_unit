@@ -1,5 +1,6 @@
 <?php
 	require_once('../config.php');
+        var_dump(is_writable('../uploads/products'));
 	add_product();
 ?>
 <div class="col-md-12">
@@ -21,7 +22,7 @@
          <div class="form-group row">
             <div class="col-xs-3">
                <label for="product-price">Product Price</label>
-               <input type="number" name="product_price" class="form-control" size="60">
+               <input step="0.01" type="number" name="product_price" class="form-control" size="60">
             </div>
          </div>
          <div class="form-group">
