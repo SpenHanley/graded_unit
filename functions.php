@@ -324,7 +324,7 @@ DELIMITER;
 
 function register_user() {
   if (isset($_POST['register'])) {
-    $path = '../uploads/users/';
+    $path = 'uploads/users/';
     $first_name = escape_string($_POST['first_name']);
     $last_name = escape_string($_POST['last_name']);
     $user_image = escape_string($_FILES['file']['name']);

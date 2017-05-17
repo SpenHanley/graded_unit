@@ -9,7 +9,6 @@
         }
       ?>
    </p>
-   <a href="index.php?add_u" class="btn btn-primary">Add User</a>
    <div class="col-md-12">
       <table class="table table-hover">
          <thead>
