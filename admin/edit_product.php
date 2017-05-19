@@ -3,7 +3,7 @@ if (!isset($_GET['id'])) {
   redirect("index.php");
 }
 $row = fetch_array(get_product($_GET['id']));
-update_product();
+update_product($_GET['id']);
 ?>
 <div class="col-md-12">
    <div class="row">
@@ -54,7 +54,7 @@ update_product();
          <!-- Product Image -->
          <div class="form-group">
             <label for="product-title">Product Image</label>
-            <input type="file" name="file" value="<?php echo $row['product_image']; ?>">
+            <input type="file" name="file">
          </div>
       </aside>
       <!--SIDEBAR-->

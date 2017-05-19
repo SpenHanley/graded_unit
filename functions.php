@@ -68,7 +68,7 @@ function get_products() {
                                                 <div class="col-sm-4 col-lg-4 col-md-4">
                                                         <div class="thumbnail">
                                                                 <a href="item.php?id={$row['product_id']}">
-                                                                        <img src="uploads/{$row['product_image']}" alt="">
+                                                                        <img style="width: 210px" src="uploads/{$row['product_image']}" alt="">
                                                                 </a>
                                                                 <div class="caption">
                                                                         <h4 class="pull-right">{$row['product_price']}</h4>
@@ -365,8 +365,10 @@ function get_user($id) {
   return $query;
 }
 
-function update_product() {
+function update_product($id) {
   if (isset($_POST['publish'])) {
+    $path = "../uploads/products/";
+    $product_id = escape_string($id);
     $title = escape_string($_POST['product_title']);
     $price = escape_string($_POST['product_price']);
     $description = escape_string($_POST['product_description']);
@@ -376,15 +378,16 @@ function update_product() {
 
     $product_image = escape_string($_FILES['file']['name']);
     $image_temp_location = escape_string($_FILES['file']['tmp_name']);
-    move_uploaded_file($_FILES['file']['tmp_name'], "../uploads/products/".$user_image);
+    move_uploaded_file($image_temp_location, $path.$product_image);
 
     $query = "UPDATE products SET product_title='{$title}',
-                               product_price='{$price}',
-                               product_description='{$description}',
-                               product_quantity='{$quantity}',
-                               short_desc='{$short_desc}',
-                               product_image='products/{$product_image}',
-                               product_category_id='{$product_category}'";
+      product_price='{$price}',
+      product_description='{$description}',
+      product_quantity='{$quantity}',
+      short_desc='{$short_desc}',
+      product_image='products/{$product_image}',
+      product_category_id='{$product_category}'
+      WHERE product_id='{$product_id}'";
     $query = query($query);
     confirm($query);
     redirect('index.php');
